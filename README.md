@@ -45,55 +45,99 @@ After this Challenge I should be able to Code/Understand:
 
 ### Links
 
-- Solution Github URL: [https://github.com/Rod-Barbosa/momentumClone](https://github.com/Rod-Barbosa/momentumClone)
-- Live Site URL: no live site for chrome extension, jsut download the repo and install on your browser
+- Solution Github URL: [github.com/Rod-Barbosa/notes-app](https://github.com/Rod-Barbosa/notes-app)
+- Live Site URL: [rodrigo-notes-app.netlify.app/](https://rodrigo-notes-app.netlify.app/)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- JavaScript
+- React Hooks (useState(), useEffect())
+- localStorage
+- 3rd party libraries (react-split, nanoId, mde, showdown)
 - Chrome Dev Tools
 
 ### What I learned
 
-This makes the background walways pretty
-```css
-body {
-    background: no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+JSON.parse()/JSON.stringify() are combined with locaStorage because localStorage needs its key values to be strings, while useState needs the same values to be objects. The integration might seem confusing.... just keep in mind: localStorage.getItem("key")/localStorage.setItem("key", value) -> "key" needs to be a string
+
+```React
+    const [notes, setNotes] = React.useState(
+        JSON.parse(localStorage.getItem("notes")) || []
+    )
+
+{…}
+
+    React.useEffect(() => {
+        localStorage.setItem("notes", JSON.stringify(notes))
+    }, [notes])
 ```
 
-Making letters easier to read on a picture background
-```css
-{
-    text-shadow: 0px 0px 20px #aaaaaa;
-    text-shadow: 1px 1px 2px #474747;
-}
+Lazy State initialization. Just add a function so that state initialization doesn’t get re-run every time state updates. Performance optimization gains.
+```
+    const [notes, setNotes] = React.useState(
+        () => JSON.parse(localStorage.getItem("notes")) || []
+    )
 ```
 
-To work with view hight without running into margins forcing scrolling
-```css
-* {
+Pure CSS icons are amazing, but just copy them, coding from scratch is a nightmare
+
+```CSS
+
+ .gg-trash {
     box-sizing: border-box;
-}  
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 10px;
+    height: 12px;
+    border: 2px solid transparent;
+    box-shadow:
+        0 0 0 2px,
+        inset -2px 0 0,
+        inset 2px 0 0;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    margin-top: 4px
+}
+
+.gg-trash::after,
+.gg-trash::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute
+}
+
+.gg-trash::after {
+    background: currentColor;
+    border-radius: 3px;
+    width: 16px;
+    height: 2px;
+    top: -4px;
+    left: -5px
+}
+
+.gg-trash::before {
+    width: 10px;
+    height: 4px;
+    border: 2px solid;
+    border-bottom: transparent;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    top: -7px;
+    left: -2px
+} 
 ```
 
 ### Continued development
 
-This could go 1000 different directions, but just adding stuff to the screen seems counter productive to a tab extension that is supposed to free your mind from being bombarded by too much information
+More CSS customization might be a way to go in the future. The titles also need work. As of now, the notes titles include the markup. Hiding markup seems like the way to go, but since the user can combine multiple markups at once... the problem can't be solved with a simple regEx.
 
 ### Useful resources
 
-- [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API/Using_the_Geolocation_API#getting_the_current_position) - Specially cool to use the lon and lat params
-- [Javascript Clock Updated every second](https://stackoverflow.com/questions/39418405/making-a-live-clock-in-javascript) - setInterval(function, 1000) saves the day once again
-- [Crypto API](https://www.coingecko.com/en/api/documentation) - Coingecko seems overloaded and slow, but it gets the job done
+- [MDN local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) - So I don’t lose my notes when refreshing the browser
+
 
 ## Author
 
