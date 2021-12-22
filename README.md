@@ -1,6 +1,6 @@
-# Scrimba Frontend Career Path - (Momentum Chrome Extension - Module 07)
+# Scrimba Frontend Career Path - (Notes App - Module 11)
 
-This is a solution to the [Scrimba Frontend Career Path - (Module07-APIs/Game of War)](https://scrimba.com/learn/frontend).
+This is a solution to the [Scrimba Frontend Career Path - (Module11-ReactBasics/Notes App)](https://scrimba.com/learn/frontend).
 
 ## Table of contents
 
@@ -21,21 +21,24 @@ This is a solution to the [Scrimba Frontend Career Path - (Module07-APIs/Game of
 
 ### The challenge
 
-Clone of the famous chrome extension "momentum"
+Create a notes App using React hooks
 
 After this Challenge I should be able to Code/Understand:
 
-- Clients/Servers
-- Requests/Response
-- JSON
-- fetch/.then()
-- Requests(methods, headers, body, URL)
-- REST API Design (params, query)
-- Async Javascript (callbacks, promises, async/await)
+- React.useState()
+- localStorage.getItem/localStorage.setItem
+- JSON.stringify()/JSON.parse()
+- Lazy State Initialization
+- React.useEffect()
+- 3rd party libraries
 
 ### Screenshot
 
-![](./imagem.png)
+![](./noNotes.png)
+![](./firstNote.png)
+![](./preview.png)
+![](./delete.png)
+
 
 ### Links
 
