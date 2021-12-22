@@ -37,6 +37,7 @@ After this Challenge I should be able to Code/Understand:
 ![](./noNotes.png)
 ![](./firstNote.png)
 ![](./preview.png)
+Notice the trash icon (pure CSS icon). By clicking it, the user can delete the note 
 ![](./delete.png)
 
 
